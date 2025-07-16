@@ -1,0 +1,56 @@
+
+<body class="bg-historia">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="w-100" style="max-width: 600px;">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Editar Historia Clínica</h3>
+
+                    <div *ngIf="loading" class="d-flex justify-content-center align-items-center" style="height: 200px;">
+                        <div class="spinner-border text-success" role="status">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                    </div>
+
+                    <form *ngIf="!loading" (ngSubmit)="actualizarHistoria()" #formHistoria="ngForm">
+
+                        <input type="hidden" [value]="historiaClinica.idPaciente" name="idPaciente" />
+                        <input type="hidden" [value]="historiaClinica.id" name="id" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Alergias</label>
+                            <input type="text" name="alergias" class="form-control"
+                                [(ngModel)]="historiaClinica.alergias" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Enfermedades Previas</label>
+                            <input type="text" name="enfermedadesPrevias" class="form-control"
+                                [(ngModel)]="historiaClinica.enfermedadesPrevias" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Observaciones Generales</label>
+                            <textarea name="observacionesGenerales" class="form-control" rows="3"
+                                [(ngModel)]="historiaClinica.observacionesGenerales"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Antecedentes</label>
+                            <textarea name="antecedentes" class="form-control" rows="3"
+                                [(ngModel)]="historiaClinica.antecedentes"></textarea>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success" [disabled]="submitting">
+                                <span *ngIf="submitting" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                <span role="status">{{ submitting ? 'Actualizando...' : '💾 Actualizar' }}</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" (click)="volver(historiaClinica.idPaciente)">⬅️ Volver</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

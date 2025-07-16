@@ -1,0 +1,51 @@
+
+
+#sidebar-wrapper {
+  position: fixed;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #222;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.text-custom {
+  color: #198754; 
+}
+
+
+.sidebar-nav a:hover {
+  background: #444;
+}
+
+.masthead {
+  height: 100vh;
+  background-image: url('../../../assets/bg-masthead.jpg');
+  background-size: cover;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.masthead h1 {
+  font-size: 4rem;
+}
+
+.masthead h3 {
+  font-weight: 300;
+}
+
+.btn-xl {
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  border-radius: 10px;
+}

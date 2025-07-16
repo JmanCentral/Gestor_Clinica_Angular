@@ -1,0 +1,33 @@
+
+<!-- detalle-historia-clinica.component.html -->
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="w-100 tamaño">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title text-center mb-4">Historia Clínica del Paciente</h3>
+
+        <!-- Lista de información de la historia clínica -->
+        <ul class="list-group mb-4" *ngIf="historia">
+          <li class="list-group-item"><strong>Alergias:</strong> {{ historia.alergias }}</li>
+          <li class="list-group-item"><strong>Enfermedades Previas:</strong> {{ historia.enfermedades }}</li>
+          <li class="list-group-item"><strong>Observaciones Generales:</strong> {{ historia.observaciones }}</li>
+          <li class="list-group-item"><strong>Antecedentes:</strong> {{ historia.antecedentes }}</li>
+          <li class="list-group-item"><strong>Fecha de creación:</strong> {{ historia.fechaCreacion }}</li>
+        </ul>
+
+        <!-- Botones de acción -->
+        <div class="d-grid gap-2 d-md-block text-center" *ngIf="historia">
+          <button class="btn btn-success me-2" (click)="editarHistoria()">✏️ Editar</button>
+          <button class="btn btn-danger" (click)="eliminarHistoria()">❌ Eliminar</button>
+        </div>
+
+        <hr class="my-4" />
+
+        <!-- Volver al listado -->
+        <div class="text-center">
+          <a routerLink="/pacientes" class="btn btn-secondary">🔙 Volver al listado de pacientes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

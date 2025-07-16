@@ -1,0 +1,23 @@
+
+.bg-paciente {
+    background-image: url("./assets/fondo-formulario.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.bg-historia {
+    background-image: url("./assets/historia-clinica.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.tamaño {
+    max-width: 600px;
+}
+
+
+

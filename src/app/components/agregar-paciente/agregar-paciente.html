@@ -1,0 +1,58 @@
+
+<body class="bg-paciente">
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="w-100" style="max-width: 500px;">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-4">Registrar Nuevo Paciente</h3>
+
+          <form (ngSubmit)="agregarPaciente()" #formPaciente="ngForm">
+            <div class="mb-3">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-control" name="nombre" [(ngModel)]="paciente.nombre" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Documento</label>
+              <input type="text" class="form-control" name="documento" [(ngModel)]="paciente.documento" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Correo</label>
+              <input type="email" class="form-control" name="correo" [(ngModel)]="paciente.correo" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Teléfono</label>
+              <input type="text" class="form-control" name="telefono" [(ngModel)]="paciente.telefono" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Fecha de Nacimiento</label>
+              <input type="date" class="form-control" name="fechaNacimiento" [(ngModel)]="paciente.fechaNacimiento" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Dirección Completa</label>
+              <input type="text" class="form-control" name="direccionCompleta" [(ngModel)]="paciente.direccionCompleta" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Tipo de Sangre</  label>
+              <input type="text" class="form-control" name="tipoSangre" [(ngModel)]="paciente.tipoSangre" required>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-success d-flex align-items-center justify-content-center gap-2"[disabled]="formPaciente.invalid || loading">
+                <span *ngIf="!loading">💾 Guardar</span>
+                <span *ngIf="loading" class="spinner-border spinner-border-sm text-light" role="status" aria-hidden="true"></span>
+                <span *ngIf="loading">Guardando...</span>
+              </button>
+             <button type="submit" class="btn btn-secondary" (click)="volverALista()">⬅️ Volver a la lista</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

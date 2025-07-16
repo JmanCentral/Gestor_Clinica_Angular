@@ -1,0 +1,75 @@
+
+<nav class="navbar navbar-dark bg-success mb-4">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1 mx-auto">🩺 Pacientes Registrados</span>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+    <div class="d-flex flex-wrap gap-2">
+      <button (click)="nuevoPaciente()" class="btn btn-success">➕ Nuevo Paciente</button>
+      <button (click)="volverAlMenu()" class="btn btn-secondary">🏠 Volver al Menú</button>
+    </div>
+
+    <div class="d-flex flex-wrap gap-3">
+      <div class="input-con-borde">
+        <input type="text" [formControl]="busquedaControl" placeholder="Buscar paciente..." class="form-control" />
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="d-flex justify-content-center align-items-center" style="height: 500px;">
+    <div class="spinner-border text-success" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <div class="table-responsive" *ngIf="!loading">
+    <table class="table table-bordered table-hover table-striped align-middle text-center">
+      <thead class="table-success">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Documento</th>
+          <th>Correo</th>
+          <th>Teléfono</th> 
+          <th>Fecha Nac.</th>
+          <th>Dirección</th>
+          <th>Tipo Sangre</th>
+          <th>Acciones</th>
+          <th>Historia Clínica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="pacientes.length == 0">
+          <td colspan="10">Sin pacientes para mostrar.</td>
+        </tr>
+        <tr *ngFor="let p of pacientes">
+          <td>{{ p.id }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.documento }}</td>
+          <td>{{ p.correo }}</td>
+          <td>{{ p.telefono }}</td>
+          <td>{{ p.fechaNacimiento }}</td>
+          <td>{{ p.direccionCompleta }}</td>
+          <td>{{ p.tipoSangre }}</td>
+          <td>
+          <button *ngIf="p.id !== undefined" (click)="confirmarEliminacion(p.id)" class="btn btn-sm btn-danger">
+            ❌ Eliminar
+          </button>
+          <button *ngIf="p.id !== undefined" (click)="modificarPaciente(p.id)" class="btn btn-sm btn-success ms-2">
+           ✏️ editar
+          </button>
+          </td>
+          <td>
+            <button *ngIf="p.id !== undefined" (click)="verHistoriaClinica(p.id , p.nombre)" class="btn btn-sm btn-info">
+              📄 Ver Historia
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
