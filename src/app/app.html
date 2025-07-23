@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper" [class.ml-64]="isSidebarVisible">
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>

@@ -1,23 +1,11 @@
 
-.bg-paciente {
-    background-image: url("./assets/fondo-formulario.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
+@import "tailwindcss";
 
-.bg-historia {
-    background-image: url("./assets/historia-clinica.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
+@import "flowbite/src/themes/default";
 
-.tamaño {
-    max-width: 600px;
-}
+@plugin "flowbite/plugin";
+
+@source "../node_modules/flowbite";
 
 
 

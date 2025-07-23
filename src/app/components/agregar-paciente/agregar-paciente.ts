@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { PacienteService } from '../../services/paciente-service';
 import { Paciente } from '../../models/paciente'; // Asegúrate de que la ruta sea correcta
 import { Router } from '@angular/router'; // Importa Router para la navegación
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { ButtonModule } from 'primeng/button';
 
 
 @Component({
   selector: 'app-agregar-paciente',
-  imports: [FormsModule , CommonModule],  
+  imports: [FormsModule , CommonModule , SelectButtonModule , ButtonModule],  
   templateUrl: './agregar-paciente.html',
   styleUrl: './agregar-paciente.css'
 })

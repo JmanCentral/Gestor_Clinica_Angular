@@ -1,0 +1,7 @@
+.content-wrapper {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.ml-64 {
+  margin-left: 16rem; /* 256px, que es el ancho del sidebar (w-64) */
+}

@@ -1,0 +1,134 @@
+/* Contenedor principal */
+.header {
+  background-color: white;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 50;
+  min-height: 70px;
+}
+
+/* Flex general */
+.header-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Logo */
+.logo-large {
+  display: inline-block;
+}
+
+.logo-small {
+  display: none;
+}
+
+.logo-img-large {
+  width: 144px;
+}
+
+.logo-img-small {
+  width: 36px;
+}
+
+/* Navegación */
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #1e293b;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 8px 12px;
+  display: block;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #2563eb; /* azul */
+}
+
+/* Botones */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-outline:hover {
+  background-color: #f8fafc;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  border: 1px solid #2563eb;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #1e40af;
+}
+
+/* Iconos */
+.menu-icon,
+.close-icon {
+  width: 24px;
+  height: 24px;
+  fill: #000;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .logo-large {
+    display: none;
+  }
+  .logo-small {
+    display: inline-block;
+  }
+  .nav-links {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 300px;
+    height: 100vh;
+    padding: 24px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    display: none;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+}

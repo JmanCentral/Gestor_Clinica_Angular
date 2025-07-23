@@ -1,72 +1,82 @@
 
-<nav class="navbar navbar-dark bg-success mb-4">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1 mx-auto">🩺 Pacientes Registrados</span>
-  </div>
-</nav>
+  
+<div class="container mx-auto p-4">
 
-<div class="container">
-
-  <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
-    <div class="d-flex flex-wrap gap-2">
-      <button (click)="nuevoPaciente()" class="btn btn-success">➕ Nuevo Paciente</button>
-      <button (click)="volverAlMenu()" class="btn btn-secondary">🏠 Volver al Menú</button>
-    </div>
-
-    <div class="d-flex flex-wrap gap-3">
-      <div class="input-con-borde">
-        <input type="text" [formControl]="busquedaControl" placeholder="Buscar paciente..." class="form-control" />
-      </div>
-    </div>
+  <div class="mb-4 flex justify-between items-center">
+  <div class="flex gap-2"> <!-- Cambiado a flex (Tailwind) -->
+    <button 
+      (click)="nuevoPaciente()" 
+      class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-medium !rounded-lg text-sm px-5 py-2.5 text-center">
+      ➕ Nuevo Paciente
+    </button>
+    <button 
+      (click)="volverAlMenu()" 
+      class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 shadow-lg shadow-green-500/50 font-medium !rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+      🏠 Volver al Menú
+    </button>
   </div>
 
-  <div *ngIf="loading" class="d-flex justify-content-center align-items-center" style="height: 500px;">
-    <div class="spinner-border text-success" role="status">
-      <span class="visually-hidden">Cargando...</span>
+  <div class="flex gap-3"> <!-- Cambiado a flex (Tailwind) -->
+    <div class="relative">
+      <input 
+        type="text" 
+        [formControl]="busquedaControl" 
+        placeholder="Buscar paciente..." 
+        class="block w-full p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" />
     </div>
   </div>
+</div>
 
-  <div class="table-responsive" *ngIf="!loading">
-    <table class="table table-bordered table-hover table-striped align-middle text-center">
-      <thead class="table-success">
+  <div *ngIf="loading" class="flex justify-center items-center h-96">
+    <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-500"></div>
+  </div>
+
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg" *ngIf="!loading">
+    <table class="w-full text-sm text-left rtl:text-right text-blue-100 dark:text-blue-100">
+      <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
         <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Documento</th>
-          <th>Correo</th>
-          <th>Teléfono</th> 
-          <th>Fecha Nac.</th>
-          <th>Dirección</th>
-          <th>Tipo Sangre</th>
-          <th>Acciones</th>
-          <th>Historia Clínica</th>
+          <th scope="col" class="px-6 py-3 bg-blue-500">ID</th>
+          <th scope="col" class="px-6 py-3">Nombre</th>
+          <th scope="col" class="px-6 py-3 bg-blue-500">Documento</th>
+          <th scope="col" class="px-6 py-3">Correo</th>
+          <th scope="col" class="px-6 py-3 bg-blue-500">Teléfono</th> 
+          <th scope="col" class="px-6 py-3">Fecha Nac.</th>
+          <th scope="col" class="px-6 py-3 bg-blue-500">Dirección</th>
+          <th scope="col" class="px-6 py-3">Tipo Sangre</th>
+          <th scope="col" class="px-6 py-3 bg-blue-500">Acciones</th>
+          <th scope="col" class="px-6 py-3">Historia Clínica</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngIf="pacientes.length == 0">
-          <td colspan="10">Sin pacientes para mostrar.</td>
+          <td colspan="10" class="px-6 py-4 text-center">Sin pacientes para mostrar.</td>
         </tr>
-        <tr *ngFor="let p of pacientes">
-          <td>{{ p.id }}</td>
-          <td>{{ p.nombre }}</td>
-          <td>{{ p.documento }}</td>
-          <td>{{ p.correo }}</td>
-          <td>{{ p.telefono }}</td>
-          <td>{{ p.fechaNacimiento }}</td>
-          <td>{{ p.direccionCompleta }}</td>
-          <td>{{ p.tipoSangre }}</td>
-          <td>
-          <button *ngIf="p.id !== undefined" (click)="confirmarEliminacion(p.id)" class="btn btn-sm btn-danger">
-            ❌ Eliminar
-          </button>
-          <button *ngIf="p.id !== undefined" (click)="modificarPaciente(p.id)" class="btn btn-sm btn-success ms-2">
-           ✏️ editar
-          </button>
-          </td>
-          <td>
-            <button *ngIf="p.id !== undefined" (click)="verHistoriaClinica(p.id , p.nombre)" class="btn btn-sm btn-info">
-              📄 Ver Historia
+        <tr *ngFor="let p of pacientes" class="bg-blue-600 border-b border-blue-400">
+          <td scope="row" class="px-6 py-4 font-medium bg-blue-500 text-blue-50 whitespace-nowrap dark:text-blue-100">{{ p.id }}</td>
+          <td class="px-6 py-4">{{ p.nombre }}</td>
+          <td class="px-6 py-4 bg-blue-500">{{ p.documento }}</td>
+          <td class="px-6 py-4">{{ p.correo }}</td>
+          <td class="px-6 py-4 bg-blue-500">{{ p.telefono }}</td>
+          <td class="px-6 py-4">{{ p.fechaNacimiento }}</td>
+          <td class="px-6 py-4 bg-blue-500">{{ p.direccionCompleta }}</td>
+          <td class="px-6 py-4">{{ p.tipoSangre }}</td>
+          <td class="px-6 py-4 bg-blue-500">
+            <button 
+              *ngIf="p.id !== undefined" 
+              (click)="confirmarEliminacion(p.id)" 
+              class="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 shadow-lg shadow-red-500/50 font-medium rounded-lg text-sm px-3 py-1.5 text-center me-1">
+              ❌ Eliminar
             </button>
+            
+            <button 
+              *ngIf="p.id !== undefined" 
+              (click)="modificarPaciente(p.id)" 
+              class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-3 py-1.5 text-center ms-1">
+              ✏️ Editar
+            </button>
+        </td>
+          <td class="px-6 py-4">
+            <button *ngIf="p.id !== undefined" (click)="verHistoriaClinica(p.id , p.nombre)" class="font-medium text-white hover:underline">📄 Ver Historia</button>
           </td>
         </tr>
       </tbody>
