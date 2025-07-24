@@ -1,40 +1,37 @@
+<div class="banner custom-gradient">
+  <nav class="px-4 lg:px-6 py-3">
+    <div class="flex items-center justify-between max-w-screen-xl mx-auto relative">
 
-  <nav class="bg-white border-b border-gray-200 px-4 lg:px-6 py-3 shadow-sm">
-
-
-    <div class="flex justify-between items-center max-w-screen-xl mx-auto">
-
-      <!-- Logo + Botón Menú -->
+      <!-- Columna izquierda (Botón Menú) -->
       <div class="flex items-center space-x-4">
-        <!-- Botón menú -->
         <button (click)="toggleSidebar()" class="text-gray-600 hover:text-gray-900 focus:outline-none">
-          <!-- Ícono hamburguesa con SVG -->
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-               viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round"
                   d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
-
-        <!-- Logo -->
-        <a href="#" class="flex items-center space-x-2">
-          <img
-              src="https://imgs.search.brave.com/G9GdxTOwkNLBZpHqxilEj6mgo5SnihrWX9H3kOje1R4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZW1hZ2lzdGVyLmNv/bS5jby9ibG9nL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIxLzA4/L2xvZ28tcHJvZmFt/aWxpYS0zMDB4MjAw/LmpwZw"
-              class="h-20 max-h-25 w-auto"
-              alt="Logo"
-          />
-        </a>
       </div>
 
-        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-amber-900 md:text-5xl lg:text-6xl dark:text-lime-700">Se parte del cambio</h1>
+      <!-- Logo centrado -->
+      <div class="absolute left-1/2 transform -translate-x-1/2">
+        <button (click)="Dashboard()" class="flex items-center space-x-2">
+          <img
+            src="assets/profamilia.png"
+            class="h-28 max-h-30 w-auto"
+            alt="Logo"
+          />
+        </button>
+      </div>
 
-      <!-- Avatar -->
+      <!-- Columna derecha (Avatar) -->
       <div class="flex items-center">
         <img 
           class="w-10 h-10 rounded-full object-cover" 
           src="https://www.svgrepo.com/show/34340/avatar.svg" 
         />
       </div>
-      
+
     </div>
   </nav>
+</div>

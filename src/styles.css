@@ -8,4 +8,10 @@
 @source "../node_modules/flowbite";
 
 
+.custom-gradient {
+  background: linear-gradient(to right, #7ED321, #5a9b18)
+}
+
+
+
 
