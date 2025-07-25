@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { finalize } from 'rxjs/operators';
-import { Subject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs'; 
 
 @Component({
   selector: 'app-listar-paciente',
@@ -20,7 +20,7 @@ import { Subject, Subscription } from 'rxjs';
 })
 export class ListarPaciente implements OnInit {
 
-  private suscripciones: Subscription = new Subscription();
+ private suscripciones: Subscription = new Subscription();
 
   pacientes: Paciente[] = [];
   busquedaNombre: string = '';

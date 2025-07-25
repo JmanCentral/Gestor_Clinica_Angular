@@ -1,20 +1,23 @@
 import { Routes } from '@angular/router';
-import { ListarPaciente } from './components/listar-paciente/listar-paciente';  
-import { EditarPaciente } from './components/editar-paciente/editar-paciente';
-import { AgregarPaciente } from './components/agregar-paciente/agregar-paciente';
-import { ListarHistoria } from './components/listar-historia/listar-historia';
-import { AgregarHistoria } from './components/agregar-historia/agregar-historia';
-import { EditarHistoria } from './components/editar-historia/editar-historia';
-import { Main } from './components/main/main';        
 
 export const routes: Routes = [
+  
+  { path: 'login', loadComponent: () => import('./components/login/login').then(m => m.Login)},
+  { path: 'registro', loadComponent: () => import('./components/registro/registro').then(m => m.Registro)},
 
-  { path: '', component:Main , pathMatch: 'full' },
-  { path: 'listpacientes', component: ListarPaciente},
-  { path: 'pacientes/nuevo', component: AgregarPaciente},
-  { path: 'pacientes/editar/:id', component: EditarPaciente},
-  { path: 'historia-clinica/:id', component: ListarHistoria},
-  { path: 'historia-clinica/nueva/:id', component: AgregarHistoria},
-  { path: 'historia-clinica/editar/:id', component: EditarHistoria},
+  {
+    path: '',
+    loadComponent: () => import('./components/dashboardlayout/dashboardlayout').then(m => m.Dashboardlayout),
+    children: [
+      { path: 'listpacientes', loadComponent: () => import('./components/listar-paciente/listar-paciente').then(m => m.ListarPaciente) },
+      { path: 'pacientes/nuevo', loadComponent: () => import('./components/agregar-paciente/agregar-paciente').then(m => m.AgregarPaciente)},
+      { path: 'pacientes/editar/:id', loadComponent: () => import('./components/editar-paciente/editar-paciente').then(m => m.EditarPaciente)},
+      { path: 'historia-clinica/:id', loadComponent: () => import('./components/listar-historia/listar-historia').then(m => m.ListarHistoria) },
+      { path: 'historia-clinica/nueva/:id', loadComponent: () => import('./components/agregar-historia/agregar-historia').then(m => m.AgregarHistoria) },
+      { path: 'historia-clinica/editar/:id', loadComponent: () => import('./components/editar-historia/editar-historia').then(m => m.EditarHistoria)},
+    ]
+  },
 
+  
+  { path: '**', redirectTo: 'login' }
 ];

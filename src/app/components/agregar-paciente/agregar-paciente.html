@@ -6,41 +6,45 @@
         <div class="card-body">
           <h3 class="card-title text-center mb-4">Registrar Nuevo Paciente</h3>
 
-          <form (ngSubmit)="agregarPaciente()" #formPaciente="ngForm">
+          <form [formGroup]="formPaciente" (ngSubmit)="agregarPaciente()">
             <div class="mb-3">
               <label class="form-label">Nombre</label>
-              <input type="text" class="form-control" name="nombre" [(ngModel)]="paciente.nombre" required>
+              <input type="text" class="form-control" formControlName="nombre">
             </div>
-
             <div class="mb-3">
               <label class="form-label">Documento</label>
-              <input type="text" class="form-control" name="documento" [(ngModel)]="paciente.documento" required>
+              <input type="text" class="form-control" formControlName="documento">
             </div>
 
             <div class="mb-3">
               <label class="form-label">Correo</label>
-              <input type="email" class="form-control" name="correo" [(ngModel)]="paciente.correo" required>
+              <input type="email" class="form-control" formControlName="correo">
             </div>
 
             <div class="mb-3">
               <label class="form-label">Teléfono</label>
-              <input type="text" class="form-control" name="telefono" [(ngModel)]="paciente.telefono" required>
+              <input type="text" class="form-control" formControlName="telefono">
             </div>
 
             <div class="mb-3">
               <label class="form-label">Fecha de Nacimiento</label>
-              <input type="date" class="form-control" name="fechaNacimiento" [(ngModel)]="paciente.fechaNacimiento" required>
+              <input type="date" class="form-control" formControlName="fechaNacimiento">
             </div>
 
             <div class="mb-3">
               <label class="form-label">Dirección Completa</label>
-              <input type="text" class="form-control" name="direccionCompleta" [(ngModel)]="paciente.direccionCompleta" required>
+              <input type="text" class="form-control" formControlName="direccionCompleta">
             </div>
 
-            <div class="mb-3">
-              <label class="form-label">Tipo de Sangre</  label>
-              <input type="text" class="form-control" name="tipoSangre" [(ngModel)]="paciente.tipoSangre" required>
-            </div>
+           <div class="mb-3" [formGroup]="miFormulario">
+              <label class="form-label">Tipo de Sangre</label>
+              <select class="form-select" formControlName="tipoSangre" (change)="onTipoSangreChange()">
+                <option value="" disabled selected>Seleccione un tipo</option>
+                <option *ngFor="let tipo of tiposSangre" [value]="tipo">
+                  {{ tipo }}
+                </option>
+              </select>
+           </div>
 
             <div class="d-grid gap-2">
               <button type="submit" class="btn btn-success d-flex align-items-center justify-content-center gap-2"[disabled]="formPaciente.invalid || loading">

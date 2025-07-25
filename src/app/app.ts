@@ -14,24 +14,7 @@ import { Footer } from "./components/footer/footer";
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements OnInit, OnDestroy {
-  isSidebarVisible = false;
-  private sidebarSubscription!: Subscription;
+export class App {
 
-  constructor(private sidebarService: SidebarService) {}
-
-  ngOnInit() {
-    this.sidebarSubscription = this.sidebarService.sidebarVisible$.subscribe(
-      (isVisible) => {
-        this.isSidebarVisible = isVisible;
-      }
-    );
-  }
-
-  ngOnDestroy() {
-    if (this.sidebarSubscription) {
-      this.sidebarSubscription.unsubscribe();
-    }
-  }
 }
 

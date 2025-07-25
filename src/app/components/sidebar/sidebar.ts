@@ -19,7 +19,6 @@ export class Sidebar implements OnInit , OnDestroy {
   constructor(private sidebarService: SidebarService) {}
 
   ngOnInit(): void {
-    initFlowbite();
     this.subscription = this.sidebarService.sidebarVisible$.subscribe(
       (visible) => {
         this.isVisible = visible;
